@@ -27,9 +27,12 @@ jobs:
       - name: Set up Android SDK
         uses: android-actions/setup-android@v3
 
-      - name: Make gradlew executable
+      - name: Install Gradle and generate wrapper
         run: |
           cd HeroReminder3D
+          wget -q https://services.gradle.org/distributions/gradle-8.2-bin.zip
+          unzip -q gradle-8.2-bin.zip
+          ./gradle-8.2/bin/gradle wrapper
           chmod +x gradlew
 
       - name: Build Debug APK
